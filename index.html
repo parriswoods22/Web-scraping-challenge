@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Stuff</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="background-color:rgb(247, 204, 139);">
+  
+  <div class="container">
+
+    <div class="jumbotron text-center" style="background-color:rgb(190, 139, 61);">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape new Data</a></p>
+    </div>
+    
+  </div>
+
+
+  
+    </br>
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4>{{ mars.article_name }}</h4>
+          <p>{{ mars.article_teaser }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col-md-8 border">
+        <h2 class=""><u>Featured Mars Image</u></h2> 
+        </br>
+        <img width="600 px" height="600 px" src="{{ mars.JPL_link }}" alt="Features Mars Image">
+      </div>
+      <div class="col-md-4">
+        <div>
+          </br>
+          <h5>Mars Facts</h5>
+          <table>{{ mars.table_html | safe }}</table>
+        </div>
+        
+      
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-4">
+        <h2 class="align-items-center"><u>Mars hemispheres</u></h2>  
+      </div>
+    </div>
+    </br>
+
+    <div class="row">       
+      {% for img in mars.img_info %} 
+        <div class="col-6 border">
+        </br>
+              <div>
+                <img width="512 px" height="512 px" src="{{ img.img_url | safe }}">
+              </div>
+
+              <div>
+                <h4> {{ img.title | safe }} </h4>  
+              </div>
+      
+        </div>
+      {% endfor %}
+</div> 
+
+
+</body>
+
+</html>
+
